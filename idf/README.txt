@@ -1,0 +1,2 @@
+The IDF vectors for all 3 combined CLEF collections 2017, 2018 and 2019 can be downloaded from this link https://drive.google.com/file/d/10igJHK8du5hPZpstk7LqhaO2fG2EsEYf/view?usp=sharing
+Afterwards, place the IDF vectors in this folder.

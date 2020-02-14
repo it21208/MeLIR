@@ -1,0 +1,2 @@
+The TFIDF vectors for all 3 combined CLEF collections 2017, 2018 and 2019 can be downloaded from this link https://drive.google.com/file/d/1ndCuZ8LoNt96yBwdpjzxK7nHjTWTN3dA/view?usp=sharing
+Afterwards, place the TFIDF vectors in this folder.
