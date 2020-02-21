@@ -22,4 +22,8 @@ An example to run a project
 
 python scripts/run.py --seedDoc-folder train/seedDocs/ --tfidf-folder train/tfidf/ --qrels-folder qrels/ --l4ir-results-folder resources/abs_results_retrievalAppSubset/ --output-folder output/ --projDir /home/pfb16181/NetBeansProjects/PubMed-CAL-AutoTar/ --topic-list TOPIC_LIST_2017 --classifier svm
 
- 
+List of libraries you might need to install in python in order to use MeLIR:
+collections, os, itertools, re, string, time, defaultdict, matplotlib.pyplot, logging,
+sklearn, xgboost, rlscore, nltk, operator, math, random, save_npz, numpy, scipy.sparse,
+coo_matrix, csr_matrix, TfidfVectorizer, sys, csv. Some libraries may have other
+dependencies which the user will need to install on his system.
