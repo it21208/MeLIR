@@ -9,7 +9,7 @@ from scipy.sparse import csr_matrix
 
 def to_sparse(tfidf_dict, docid_idx_dict, vocab_idx_dict):
 
-  logging.info("converting tfidf info to sparse matrix")
+  logging.info("Converting tf-idf info to sparse matrix")
 
   num_docs, num_vocabs = len(docid_idx_dict) // 2, len(vocab_idx_dict) // 2
 

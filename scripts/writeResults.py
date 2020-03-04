@@ -13,9 +13,13 @@ def writeResults(out_folder, clf, dict_initialScoreRankingResults, LambdaParam, 
   new_list_doc_score = []
 
   def normalisation(score):
+        
     s_min, s_max = min(score), max(score)
+
     temp_var = s_max - s_min
+
     score[:] = [x - s_min for x in score]
+
     # Check if I am dividing by zero and handle 
     try:
       score[:] = [x / temp_var for x in score]
@@ -24,22 +28,28 @@ def writeResults(out_folder, clf, dict_initialScoreRankingResults, LambdaParam, 
     return(score)
 
   def interpolate(old_score, new_score):
-    '''
-    print('old_score: ', old_score, len(old_score))
-    print('--------')
-    print('new_score: ', new_score, len(new_score))
-    '''
+    
+    #print('old_score: ', old_score, len(old_score))
+    #print('--------')
+    #print('new_score: ', new_score, len(new_score))
+    
     old_score = normalisation(old_score)
+    
     new_score = normalisation(new_score)
     
     old_score = [x * (1 - LambdaParam) for x in old_score]
+    
     new_score = [x * LambdaParam for x in new_score]
+    
     score = old_score + new_score
+    
     #score = old_score
+    
     #score = new_score
+    
     #print('------------')
-    #print(score)
-    return score
+    
+    return(score)
 
   # Use dict_initialScoreRankingResults and list_doc_score
 
@@ -56,7 +66,9 @@ def writeResults(out_folder, clf, dict_initialScoreRankingResults, LambdaParam, 
 
         ''' check if docid is the same in the doc_score_list '''
         if key == doc_score_list[0]:
+          
           old_score.append(doc_score_list[1])
+          
           new_score.append(value)
 
     float_old_score = [float(i) for i in old_score]
@@ -68,8 +80,10 @@ def writeResults(out_folder, clf, dict_initialScoreRankingResults, LambdaParam, 
     #print('------------')
     #print(score)
     #print('score: ', score, len(score))
+    
     ''' I need to update the list_doc_score[idx] with the new_score values for each doc before continuing to write the results. '''
     counter = 0
+    
     # for key, value in (list_doc_score_copies[idx])[idx].items():
     for key, value in list_doc_score[idx].items():
       # ((list_doc_score_copies[idx])[idx])[key] = score[counter]

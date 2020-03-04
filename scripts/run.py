@@ -41,33 +41,28 @@ from writeResults import writeResults
 # test topics = 28, train and test topics = 125. Because 3 topics (CD011571, CD011686, CD012164) are included in both train and test sets 
 
 TOPIC_LIST_2017 = [
-  'CD005139','CD005253','CD006715','CD007431','CD007868','CD008018','CD008122','CD008170','CD008201','CD008587',
-  'CD008759','CD008892','CD009175','CD009263','CD009694','CD010019','CD010213','CD010296','CD010355','CD010502',
-  'CD010526','CD010657','CD010680','CD010771','CD010772','CD010775','CD010778','CD010783','CD010860','CD010864',
-  'CD010896','CD011053','CD011126','CD011145','CD011380','CD011420','CD011431','CD011436','CD011515','CD011571',
-  'CD011602','CD011686','CD011912','CD011926','CD012009','CD012010','CD012083','CD012120','CD012164','CD012165',
-  'CD012179','CD012216','CD012223','CD012281','CD012347','CD012521','CD012599','CD012930'
+  'CD005139','CD005253','CD006715','CD007431','CD007868','CD008018','CD008081','CD008170','CD008201','CD010019','CD010355','CD010502','CD010526','CD010657','CD010680','CD010771',
+  'CD010772','CD010775','CD010778','CD010783','CD010860','CD010864','CD010896','CD011053','CD011126','CD011145','CD011380','CD011420','CD011431','CD011436','CD011515','CD011571',
+  'CD011602','CD011686','CD011912','CD011926','CD012009','CD012010','CD012083','CD012120','CD012164','CD012165','CD012179','CD012216','CD012223','CD012281','CD012347','CD012521',
+  'CD012599','CD012930'
   ]
 
 TOPIC_LIST_2018 = [
-  'CD007394','CD007427','CD008054','CD008081','CD008643','CD008686','CD008691','CD008760','CD008782','CD008803',
-  'CD009020','CD009135','CD009185','CD009323','CD009372','CD009519','CD009591','CD009579','CD009551','CD009593',
-  'CD009647','CD009786','CD009925','CD009944','CD010023','CD010173','CD010276','CD010339','CD010386','CD010409',
-  'CD010438','CD010542','CD010632','CD010633','CD010653','CD010705','CD011134','CD011548','CD011549','CD011975',
+  'CD007394','CD007427','CD008054','CD008122','CD008587','CD008643','CD008686','CD008691','CD008759','CD008760','CD008782','CD008803','CD008892','CD009020','CD009135','CD009175',
+  'CD009185','CD009263','CD009323','CD009372','CD009519','CD009591','CD009579','CD009551','CD009593','CD009647','CD009694','CD009786','CD009925','CD009944','CD010023','CD010173',
+  'CD010213','CD010276','CD010296','CD010339','CD010386','CD010409','CD010438','CD010542','CD010632','CD010633','CD010653','CD010705','CD011134','CD011548','CD011549','CD011975',
   'CD011984','CD012019'
   ]
 
 TOPIC_LIST_2019 = [
-  'CD000996','CD001261','CD004414','CD006468','CD007867','CD008874','CD009044','CD009069','CD009642','CD010038',
-  'CD010239','CD010558','CD010753','CD011140','CD011768','CD011977','CD012069','CD012080','CD012233','CD012342',
-  'CD012455','CD012551','CD012567','CD012669','CD012768'  
+  'CD000996','CD001261','CD004414','CD006468','CD007867','CD008874','CD009044','CD009069','CD009642','CD010038','CD010239','CD010558','CD010753','CD011140','CD011768','CD011977',
+  'CD012069','CD012080','CD012233','CD012342','CD012455','CD012551','CD012567','CD012669','CD012768'  
   ]
 
 # 30 topics Waterloo 2018 CLEF
 TOPIC_LIST_UWA_UWB = [
-  'CD008122', 'CD008587','CD008759','CD008892','CD009175','CD009263','CD009694','CD010213','CD010296','CD010502',
-  'CD010657','CD010680','CD010864','CD011053','CD011126','CD011420','CD011431','CD011515','CD011602','CD011686',
-  'CD011912','CD011926','CD012009','CD012010','CD012083','CD012165','CD012179','CD012216','CD012281','CD012599'
+  'CD008122','CD008587','CD008759','CD008892','CD009175','CD009263','CD009694','CD010213','CD010296','CD010502','CD010657','CD010680','CD010864','CD011053','CD011126','CD011420',
+  'CD011431','CD011515','CD011602','CD011686','CD011912','CD011926','CD012009','CD012010','CD012083','CD012165','CD012179','CD012216','CD012281','CD012599'
   ]
 
 # 3 topics for quick testing
@@ -80,14 +75,7 @@ TOPIC_LIST_A_B_RANK_THRESH_NORMAL = [
     'CD010633','CD010653','CD010705','CD010772','CD010775','CD010783','CD010860','CD010896','CD011145','CD012019'
  ]
 
-# This is also another small topic list in order to test relatively fast scores
-# 'CD005139', 'CD005253', 'CD006715', 'CD007431', 'CD007868', 'CD008018', 'CD008122'
-# 'CD008122', 'CD008587', 'CD008759'
-# 'CD009135'
-# 'CD007431', 'CD008081', 'CD008760', 'CD008782', 'CD010705', 'CD009925'
 TOPIC_LIST_SMALL = ['CD008760'] #'CD010705' #'CD007431', 'CD008081', 'CD008760', 'CD008782'
-
-#TOPIC_LIST_SMALL = ['CD009519', 'CD009579', 'CD010705', 'CD011145']
 
 #topic_seedDoc = 'CD005139'    
 
@@ -128,15 +116,14 @@ if __name__ == "__main__":
     topic_list = topic_list_dict[args.topic_list]
     idf_file_folder = args.idf_folder
     clf = args.classifier 
-
     #print(topic_list)
     #print(type(topic_list))
     #sys.exit()
 
-    # concatenate certain strings to form the right directory paths
+    # Concatenate certain strings to form the right directory paths.
     qrels_filepath = os.path.join( qrels_file_folder, 'full.train.abs.2017.2018.2019_and_full.test.abs.2019.qrels' )
     qrels_content_filepath = os.path.join( qrels_file_folder, 'full.train.content.2017.2018.2019_and_full.test.content.2019.qrels' )
-    l4ir_results_filepath = os.path.join( l4ir_results_folder, 'bm25_b0.75_k1.2pubmed_5_tar.query6.full.train.test.abs.2019.qrels.res' )
+    l4ir_results_filepath = os.path.join( l4ir_results_folder, 'RAS.bm25_b0.75_k1.2pubmed_5_tar.title.query6.qe.2017-2019train.full.train.abs.2017.2018.2019.qrels.res' ) # bm25_b0.75_k1.2pubmed_5_tar.query6.full.train.test.abs.2019.qrels.res
     out_file_features = os.path.join( out_folder, 'features' )
     
     docid_idx_dict, topic_docid_label, cur_idx, docid_idx_dict_content, topic_docid_label_content = build_docid_idx_and_label(qrels_file_folder, topic_list)
@@ -157,7 +144,7 @@ if __name__ == "__main__":
     # Each item in the list 'list_doc_score' will contain an ordered dictionary with the doc scores for each topic in the form {docid : docscore} .
     list_doc_score = []
     
-    # Loop through all the topics in the topic_list
+    # Loop through all the topics in the topic_list.
     for topic in topic_list:
       
       # Get directory path for the seed document of the current topic.  
@@ -169,7 +156,6 @@ if __name__ == "__main__":
                                      topic, qrels_content_filepath, idf_dict, vocab_idx_dict_2, cur_idx, total_words, idf_word_dict, dict_initialScoreRankingResults))
 
     
-
     #LambdaParam_list = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
     LambdaParam_list = [0, 0.4, 0.5, 1]
     list_doc_score_copies = [None]*len(LambdaParam_list)
@@ -179,7 +165,6 @@ if __name__ == "__main__":
     # Do a Lambda parameter sweep and write results.
     for idx, LambdaParam in enumerate(LambdaParam_list):
       
-      writeResults(out_folder, clf, dict_initialScoreRankingResults,
-                   LambdaParam, topic_list, list_doc_score_copies[idx])
+      writeResults(out_folder, clf, dict_initialScoreRankingResults, LambdaParam, topic_list, list_doc_score_copies[idx])
     
     logging.info(f'Run finished in {time.time() - start_time} seconds')

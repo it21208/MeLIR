@@ -4,12 +4,15 @@
 
 import os
 
-PATH_TO_SEED_DOCS_1_REL_DOC = '/home/pfb16181/NetBeansProjects/MeLIR/train/seedDocs_1_rel_doc/'
-PATH_TO_SEED_DOCS_TITLE_AND_PROCESSED_QUERY = '/home/pfb16181/NetBeansProjects/MeLIR/train/seedDocs_title_and_processedQuery/'
+proj_dir = '/home/pfb16181/NetBeansProjects/MeLIR/'
 
-PATH_TO_SEED_DOCS_TITLE_AND_PROCESSED_QUERY_AND_1_REL_DOC = '/home/pfb16181/NetBeansProjects/MeLIR/train/seedDocs_title_and_processedQuery_rel_document/'
+PATH_TO_SEED_DOCS_1_REL_DOC = proj_dir + 'train/seedDocs_1_rel_doc/'
 
-# all 125 topics from 2017, 2018, 2019
+PATH_TO_SEED_DOCS_TITLE_AND_PROCESSED_QUERY = proj_dir + 'train/seedDocs_title_and_processedQuery/'
+
+PATH_TO_SEED_DOCS_TITLE_AND_PROCESSED_QUERY_AND_1_REL_DOC = proj_dir + 'train/seedDocs_title_and_processedQuery_rel_document/'
+
+# All 125 topics from 2017, 2018, 2019 CLEF collections.
 TOPIC_LIST=['CD005139','CD005253','CD006715','CD007431','CD007868','CD008018','CD008122','CD008170','CD008201','CD008587',
             'CD008759','CD008892','CD009175','CD009263','CD009694','CD010019','CD010213','CD010296','CD010355','CD010502',
             'CD010526','CD010657','CD010680','CD010771','CD010772','CD010775','CD010778','CD010783','CD010860','CD010864',
@@ -27,22 +30,30 @@ TOPIC_LIST=['CD005139','CD005253','CD006715','CD007431','CD007868','CD008018','C
 
 
 for topic in TOPIC_LIST:
+
     completeName1 = os.path.join(PATH_TO_SEED_DOCS_TITLE_AND_PROCESSED_QUERY, topic)
+
     completeName2 = os.path.join(PATH_TO_SEED_DOCS_1_REL_DOC, topic)
 
     string_data = ''
 
     with open(completeName1, 'r') as file1:
+
         string_data = file1.read().replace('\n', '')
 
     string_data += ' '
 
     with open(completeName2, 'r') as file2:
+
         string_data += file2.read().replace('\n', '')
 
 
     completeName = os.path.join(PATH_TO_SEED_DOCS_TITLE_AND_PROCESSED_QUERY_AND_1_REL_DOC, topic)
+
     file_seed = open(completeName, "w")
+
     file_seed.write( " ".join(string_data.split()) )
-    print('writting seed doc for topic '+topic)
+
+    print('Writting seed doc for topic '+topic)
+
     file_seed.close()
