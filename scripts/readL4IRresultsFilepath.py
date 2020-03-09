@@ -33,19 +33,19 @@ TOPIC_LIST_ALL = TOPIC_LIST_2017 + TOPIC_LIST_2018 + TOPIC_LIST_2019
 
 def readL4IRresultsFilepath(l4ir_results_filepath):
 
-  logging.info(f'start loading the l4ir results file')
-  dict_initialScoreRankingResults = collections.OrderedDict()
+    logging.info(f'start loading the l4ir results file')
+    dict_initialScoreRankingResults = collections.OrderedDict()
 
-  for key in TOPIC_LIST_ALL:
-    dict_initialScoreRankingResults.update({key: []})
+    for key in TOPIC_LIST_ALL:
+        dict_initialScoreRankingResults.update({key: []})
 
-  with open(l4ir_results_filepath, 'r') as f:
+    with open(l4ir_results_filepath, 'r') as f:
 
-    for line in f:
+        for line in f:
 
-      topic, _, docid, _, score, _ = line.strip().split()
-      dict_initialScoreRankingResults[topic].append([docid, score])
+            topic, _, docid, _, score, _ = line.strip().split()
+            dict_initialScoreRankingResults[topic].append([docid, score])
 
-  logging.info(f'finish loading the l4ir results file')
+    logging.info(f'finish loading the l4ir results file')
 
-  return dict_initialScoreRankingResults
+    return dict_initialScoreRankingResults

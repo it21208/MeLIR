@@ -2,11 +2,11 @@
 
 
 def readInitialRanking(filename):
-    
+
     list_of_pmids_for_topic = []
-    
+
     record = False
-    
+
     with open(filename, "r") as f:
 
         while f:

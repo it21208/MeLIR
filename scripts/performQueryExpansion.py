@@ -1,6 +1,6 @@
-#'!/usr/bin/python
-#'-*-'coding:utf-8'-*-
-#'author'='Alexandros'Ioannidis
+# '!/usr/bin/python
+# '-*-'coding:utf-8'-*-
+# 'author'='Alexandros'Ioannidis
 import os
 import logging
 import argparse
@@ -9,13 +9,14 @@ from scipy.sparse import load_npz
 from build_docid_idx_and_label import build_docid_idx_and_label
 from build_vocab_tfidf_dict import build_vocab_tfidf_dict
 import sys
-from collections import Counter 
+from collections import Counter
 import itertools
 
 path = '/home/pfb16181/NetBeansProjects/MeLIR/output/features/'
 qrels_file_folder = '/home/pfb16181/NetBeansProjects/MeLIR/qrels/'
 tfidf_file_folder = '/home/pfb16181/NetBeansProjects/MeLIR/train/tfidf/'
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S ')
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S ')
 TOPIC_LIST = ['CD012930']
 '''
 ['CD000996','CD001261','CD004414','CD005139','CD005253','CD006468','CD006715','CD007394','CD007427','CD007431','CD007867','CD007868','CD008018','CD008054',
@@ -33,8 +34,10 @@ parser.add_argument("--topic", '-t', type=str, help='provide topic to perform qu
 args = parser.parse_args() 
 topic = args.topic
 '''
-docid_idx_dict, topic_docid_label, cur_idx,  docid_idx_dict_content, topic_docid_label_content = build_docid_idx_and_label(qrels_file_folder, TOPIC_LIST)
-vocab_idx_dict, tfidf_dict, total_words = build_vocab_tfidf_dict(tfidf_file_folder, docid_idx_dict)
+docid_idx_dict, topic_docid_label, cur_idx,  docid_idx_dict_content, topic_docid_label_content = build_docid_idx_and_label(
+    qrels_file_folder, TOPIC_LIST)
+vocab_idx_dict, tfidf_dict, total_words = build_vocab_tfidf_dict(
+    tfidf_file_folder, docid_idx_dict)
 for topic in TOPIC_LIST:
     cx = coo_matrix(load_npz(os.path.join(path, f'{topic}.npz')))
     topic_term_tfidf_dict = {}
@@ -43,13 +46,13 @@ for topic in TOPIC_LIST:
             if topic_docid_label[topic][i] == 1:
                 topic_term_tfidf_dict[vocab_idx_dict[j]] = v
         except Exception as e:
-            pass 
-    
-    str_output = ''  
-    for i in Counter(topic_term_tfidf_dict).most_common(20): 
+            pass
+
+    str_output = ''
+    for i in Counter(topic_term_tfidf_dict).most_common(20):
         str_output += (i[0]+' ')
 
-    with open(os.path.join('/home/pfb16181/NetBeansProjects/lucene4ir-master/data/pubmed/query_parsers_2017_2018_2019/query/new_results_from_queryExpansion_top20Terms',topic), "w") as file1:
+    with open(os.path.join('/home/pfb16181/NetBeansProjects/lucene4ir-master/data/pubmed/query_parsers_2017_2018_2019/query/new_results_from_queryExpansion_top20Terms', topic), "w") as file1:
         file1.write(str_output)
-    file1.close()    
-    print('wrote ',topic)
+    file1.close()
+    print('wrote ', topic)
