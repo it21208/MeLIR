@@ -2,7 +2,7 @@
 # author = Alexandros Ioannidis
 
 
-def addCorrectColumnNumsForSeed(vocab_idx_dict, ordered_feature_names):
+def addCorrectColumnNumsForSeed(vocab_idx_dict, ordered_feature_names, train_or_test_col):
     new_cols_seed, data_seed = ([] for i in range(2))
     N = 0
     #counter = 1
@@ -16,7 +16,8 @@ def addCorrectColumnNumsForSeed(vocab_idx_dict, ordered_feature_names):
             N += 1
         #  new_cols_seed.append(counter + (max(list(np.unique(test_col)))))
         #  counter += 1
-    return(new_cols_seed, N, data_seed)
+    temp_var = train_or_test_col
+    return(new_cols_seed, N, data_seed, temp_var)
 
 
 # Here I might have to use vocab_idx_dict and tfidf_dict in order to find the correct num features and assign these in the lines below
