@@ -40,10 +40,9 @@ class main:
         computedTFIDF_seedDoc, feature_names = computeTFIDF(seedDoc, idf_dict, vocab_idx_dict_2, cur_idx, total_words, idf_word_dict)
         columns_for_seed_temp, data_seed, list_cols_seed_and_feature_names = ([] for i in range(3))
         columns_for_seed_temp = [i for i in range(len(computedTFIDF_seedDoc))]
-        help_var = [0]*(len(computedTFIDF_seedDoc))
         data = list(computedTFIDF_seedDoc.values())
         # Create sparse matrix for the unique seed document features
-        response = csr_matrix((data, (help_var, columns_for_seed_temp)), shape=(len(columns_for_seed_temp), len(help_var)))
+        response = csr_matrix((data, ([0]*(len(computedTFIDF_seedDoc)), columns_for_seed_temp)), shape=(len(columns_for_seed_temp), len([0]*(len(computedTFIDF_seedDoc)))))
         rows_seed, cols_seed = response.nonzero()
         data_seed = [response[i, j] for i, j in zip(*response.nonzero())]
         for idx, i in enumerate(cols_seed):
