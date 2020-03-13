@@ -6,7 +6,7 @@
 
 #### Author: Alexandros Ioannidis
 
-It is recommended that the viewer reads the sources below to acquire an improved understanding of the context of this repository.
+It is recommended that the viewer reads the sources below to acquire an improved understanding of the context of this repository. <br />
 ⚫ Information Retrieval: https://en.wikipedia.org/wiki/Information_retrieval <br />
 ⚫ Machine Learning: https://en.wikipedia.org/wiki/Machine_learning <br />
 ⚫ Reinforcement Learning: https://en.wikipedia.org/wiki/Reinforcement_learning <br />
