@@ -7,14 +7,14 @@
 #### Author: Alexandros Ioannidis
 
 It is recommended that the viewer reads the sources below to acquire an improved understanding of the context of this repository.
-⚫ Information Retrieval: https://en.wikipedia.org/wiki/Information_retrieval 
-⚫ Machine Learning: https://en.wikipedia.org/wiki/Machine_learning
-⚫ Reinforcement Learning: https://en.wikipedia.org/wiki/Reinforcement_learning
-⚫ Active Learning: https://en.wikipedia.org/wiki/Active_learning_(machine_learning)
-⚫ Neural Network: https://en.wikipedia.org/wiki/Neural_network
-⚫ Artificial Neural Network: https://en.wikipedia.org/wiki/Artificial_neural_network
-⚫ Deep Reinforcement Learning: https://en.wikipedia.org/wiki/Deep_reinforcement_learning
-⚫ Technology Assisted Review: https://en.wikipedia.org/wiki/Electronic_discovery#Technology-assisted_review
+⚫ Information Retrieval: https://en.wikipedia.org/wiki/Information_retrieval <br />
+⚫ Machine Learning: https://en.wikipedia.org/wiki/Machine_learning <br />
+⚫ Reinforcement Learning: https://en.wikipedia.org/wiki/Reinforcement_learning <br />
+⚫ Active Learning: https://en.wikipedia.org/wiki/Active_learning_(machine_learning) <br />
+⚫ Neural Network: https://en.wikipedia.org/wiki/Neural_network <br /> 
+⚫ Artificial Neural Network: https://en.wikipedia.org/wiki/Artificial_neural_network <br />
+⚫ Deep Reinforcement Learning: https://en.wikipedia.org/wiki/Deep_reinforcement_learning <br />
+⚫ Technology Assisted Review: https://en.wikipedia.org/wiki/Electronic_discovery#Technology-assisted_review <br />
 
 
 
