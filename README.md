@@ -5,6 +5,8 @@
 #### For more information check the README.txt file in the scripts folder of this project. 
 
 #### Author: Alexandros Ioannidis
+##### University of Strathclyde, Glasgow (UK)
+##### ©Copyright 2020 by Alexandros Ioannidis
 
 It is recommended that the viewer reads the sources below to acquire an improved understanding of the context of this repository. <br />
 ⚫ Information Retrieval: https://en.wikipedia.org/wiki/Information_retrieval <br />
