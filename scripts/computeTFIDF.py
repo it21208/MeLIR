@@ -2,11 +2,14 @@
 # author = Alexandros Ioannidis
 
 # The purpose of this script is to compute the TFIDF scores for the synthetic documents of the PubMed topics
-import math
-import nltk
+import math 
 from sklearn.feature_extraction.text import CountVectorizer
-# uncomment the line below if you need to install nltk
-# nltk.download('all')
+
+try:
+    import nltk
+except ImportError:
+    nltk.download('all')
+    import nltk
 
 
 def computeTFIDF(seedDoc, idf_dict, vocab_idx_dict_2, cur_idx, total_words, idf_word_dict):

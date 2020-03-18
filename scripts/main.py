@@ -1,6 +1,6 @@
 # !/usr/bin/python
 # author = Alexandros Ioannidis
-# Copyright Alexandros Ioannidis
+# ©Copyright 2020 by Alexandros Ioannidis
 # Thesis for Information Retrieval and machine learning for conducting systematic review. University of Strathclyde
 import collections, logging, sys, math, random
 import numpy as np
