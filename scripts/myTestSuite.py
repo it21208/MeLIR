@@ -96,13 +96,39 @@ class run():
     ################################################################################################################
 
     def parse_args():
-        text = input(
-            "Please enter the command line arguments so that I can parse them: ")
-        # >> > str = "Messi is the best soccer player"
-        # >> > "soccer" in str
-        # True
-        # >> > "football" in str
-        # False
+        
+        while True:
+            try:
+                text = input("Please enter the command line arguments so that I can parse them: ")
+            except ValueError:
+                print(
+                    "SORRY, AN ERROR OCCURED AFTER YOU PASSED THE ARGUMENTS."
+                    "Please enter the correct command line arguments ("
+                    "scripts/run.py --seedDoc-folder train/seedDocs_title_and_processedQuery_queryExpansionTop20terms/ "
+                    "--tfidf-folder train/tfidf/ --qrels-folder qrels/ "
+                    "--l4ir-results-folder resources/abs_results_retrievalAppSubset/ --output-folder output/ "
+                    "--projDir /home/pfb16181/NetBeansProjects/MeLIR/ --topic-list TOPIC_LIST_SMALL --idf-folder idf/ "
+                    "--classifier svm) so that I can parse them:. "
+                    "=============================================")
+                continue
+            
+            bool_condition = "--seedDoc-folder " not in text or "--tfidf-folder " not in text or "--qrels-folder " not in text or "--l4ir-results-folder " not in text or "--output-folder " not in text or "--projDir " not in text or "--topic-list " not in text or "--idf-folder " not in text or "--classifier " not in text
+
+            if bool_condition == True:
+                print(
+                    "Sorry, please enter the correct command line arguments ("
+                    "scripts/run.py --seedDoc-folder train/seedDocs_title_and_processedQuery_queryExpansionTop20terms/ "
+                    "--tfidf-folder train/tfidf/ --qrels-folder qrels/ "
+                    "--l4ir-results-folder resources/abs_results_retrievalAppSubset/ --output-folder output/ "
+                    "--projDir /home/pfb16181/NetBeansProjects/MeLIR/ --topic-list TOPIC_LIST_SMALL --idf-folder idf/ "
+                    "--classifier svm) so that I can parse them:. "
+                    "=============================================")
+                continue
+            else:
+                # Params are successfully entered - Ready to exit the loop.
+                break
+        
+        # Proceed to split the arguments passed by the user.
         args_splited = text.split("--")
         removed_empty_string_items = [i for i in args_splited if i]
         print('=================================')
