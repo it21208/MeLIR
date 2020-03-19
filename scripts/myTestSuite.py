@@ -2,10 +2,24 @@
 # -*- coding:utf-8 -*-
 # author = Alexandros Ioannidis
 
-import unittest, argparse, collections
+import warnings
+# import warnings filter
+from warnings import simplefilter
+# ignore all future warnings
+simplefilter(action='ignore', category=FutureWarning)
+
+import unittest
+import argparse
+import collections
 # from test import autotest
-import itertools, logging, time
-import math, os, re, string, sys
+import itertools
+import logging
+import time
+import math
+import os
+import re
+import string
+import sys
 import logging
 # import pkg_resources
 # pkg_resources.require("numpy==`1.16.2") # modified to use specific numpy
@@ -80,25 +94,42 @@ class run():
                        'TOPIC_LIST_UWA_UWBC': TOPIC_LIST_UWA_UWBC,
                        'FULL_TOPIC_LIST': TOPIC_LIST_2017+TOPIC_LIST_2018+TOPIC_LIST_2019}
     ################################################################################################################
+
     def parse_args():
-        text = input("Please enter the command line arguments so that I can parse them: ")
+        text = input(
+            "Please enter the command line arguments so that I can parse them: ")
+        # >> > str = "Messi is the best soccer player"
+        # >> > "soccer" in str
+        # True
+        # >> > "football" in str
+        # False
         args_splited = text.split("--")
         removed_empty_string_items = [i for i in args_splited if i]
         print('=================================')
         print(removed_empty_string_items)
 
         for idx, item in enumerate(removed_empty_string_items):
-            if idx == 0:  seedDoc_folder = item.split(" ")[1]
-            elif idx == 1: tfidf_file_folder = item.split(" ")[1]
-            elif idx == 2: qrels_file_folder = item.split(" ")[1]
-            elif idx == 3: l4ir_results_folder = item.split(" ")[1]
-            elif idx == 4: out_folder = item.split(" ")[1]
-            elif idx == 5: projDir = item.split(" ")[1]
-            elif idx == 6: topic_list = item.split(" ")[1]
-            elif idx == 7: idf_file_folder = item.split(" ")[1]
-            else: clf = item.split(" ")[1]
+            if idx == 0:
+                seedDoc_folder = item.split(" ")[1]
+            elif idx == 1:
+                tfidf_file_folder = item.split(" ")[1]
+            elif idx == 2:
+                qrels_file_folder = item.split(" ")[1]
+            elif idx == 3:
+                l4ir_results_folder = item.split(" ")[1]
+            elif idx == 4:
+                out_folder = item.split(" ")[1]
+            elif idx == 5:
+                projDir = item.split(" ")[1]
+            elif idx == 6:
+                topic_list = item.split(" ")[1]
+            elif idx == 7:
+                idf_file_folder = item.split(" ")[1]
+            else:
+                clf = item.split(" ")[1]
         return(seedDoc_folder, tfidf_file_folder, qrels_file_folder, l4ir_results_folder, out_folder, projDir, topic_list, idf_file_folder, clf)
     ################################################################################################################
+
     def save_dicts_to_output(dir_path, dicts_list):
         filenames = ['tfidf_dict', 'docid_idx_dict', 'vocab_idx_dict']
         for idx, dict_data in enumerate(dicts_list):
@@ -110,25 +141,33 @@ class run():
     seedDoc_folder, tfidf_file_folder, qrels_file_folder, l4ir_results_folder, out_folder, projDir, topic_list, idf_file_folder, clf = parse_args()
     topic_list = topic_list_dict[topic_list]
     # Concatenate certain strings to form the right directory paths.
-    qrels_filepath = os.path.join(qrels_file_folder, 'full.train.abs.2017.2018.2019_and_full.test.abs.2019.qrels')
-    qrels_content_filepath = os.path.join(qrels_file_folder, 'full.train.content.2017.2018.2019_and_full.test.content.2019.qrels')
+    qrels_filepath = os.path.join(
+        qrels_file_folder, 'full.train.abs.2017.2018.2019_and_full.test.abs.2019.qrels')
+    qrels_content_filepath = os.path.join(
+        qrels_file_folder, 'full.train.content.2017.2018.2019_and_full.test.content.2019.qrels')
     # bm25_b0.75_k1.2pubmed_5_tar.query6.full.train.test.abs.2019.qrels.res
-    l4ir_results_filepath = os.path.join(l4ir_results_folder, 'RAS.bm25_b0.75_k1.2pubmed_5_tar.title.query6.qe.2017-2019train.full.train.abs.2017.2018.2019.qrels.res')
+    l4ir_results_filepath = os.path.join(
+        l4ir_results_folder, 'RAS.bm25_b0.75_k1.2pubmed_5_tar.title.query6.qe.2017-2019train.full.train.abs.2017.2018.2019.qrels.res')
     out_file_features = os.path.join(out_folder, 'features')
-    docid_idx_dict, topic_docid_label, cur_idx, docid_idx_dict_content, topic_docid_label_content = build_docid_idx_and_label(qrels_file_folder, topic_list)
+    docid_idx_dict, topic_docid_label, cur_idx, docid_idx_dict_content, topic_docid_label_content = build_docid_idx_and_label(
+        qrels_file_folder, topic_list)
     # construct some required dictionary data structures
-    vocab_idx_dict, tfidf_dict, total_words = build_vocab_tfidf_dict(tfidf_file_folder, docid_idx_dict)
-    vocab_idx_dict_2, idf_dict, dummy_var, idf_word_dict = build_vocab_idf_dict(idf_file_folder, docid_idx_dict)
+    vocab_idx_dict, tfidf_dict, total_words = build_vocab_tfidf_dict(
+        tfidf_file_folder, docid_idx_dict)
+    vocab_idx_dict_2, idf_dict, dummy_var, idf_word_dict = build_vocab_idf_dict(
+        idf_file_folder, docid_idx_dict)
     tfidf_sp = to_sparse(tfidf_dict, docid_idx_dict, vocab_idx_dict)
     # Save dictionaries to output/src_outputs__test_inputs/ of the MeLIR project to read it from the test script
-    dir_src_outputs__test_inputs  = 'output/src_outputs__test_inputs/dicts/'
+    dir_src_outputs__test_inputs = 'output/src_outputs__test_inputs/dicts/'
     dir_path = projDir + dir_src_outputs__test_inputs
-    save_dicts_to_output(dir_path, [tfidf_dict, docid_idx_dict, vocab_idx_dict])
+    save_dicts_to_output(
+        dir_path, [tfidf_dict, docid_idx_dict, vocab_idx_dict])
     logging.info('=================================')
-    logging.info("Saved dictionaries: tfidf_dict, docid_idx_dict, vocab_idx_dict")
-    
+    logging.info(
+        "Saved dictionaries: tfidf_dict, docid_idx_dict, vocab_idx_dict")
+
     #runner = unittest.TextTestRunner()
     #runner.run(suite_test_to_sparse())
 ################################################################################################################
 if __name__ == '__main__':
-    run_test = run() 
+    run_test = run()

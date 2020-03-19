@@ -6,6 +6,12 @@
 # Thesis for Information Retrieval and machine learning for conducting systematic review.
 # University of Strathclyde
 
+import warnings
+# import warnings filter
+from warnings import simplefilter
+# ignore all future warnings
+simplefilter(action='ignore', category=FutureWarning)
+
 import argparse
 import collections
 import itertools
@@ -91,7 +97,8 @@ if __name__ == "__main__":
                        'TOPIC_LIST_UWA_UWBC': TOPIC_LIST_UWA_UWBC,
                        'FULL_TOPIC_LIST': TOPIC_LIST_2017+TOPIC_LIST_2018+TOPIC_LIST_2019}
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description='Process some directory strings params to execute MeLIR.')
+
     parser.add_argument("--seedDoc-folder", '-s', type=str,
                         help='path to seedDoc file folder', required=True)
     parser.add_argument("--tfidf-folder", '-t', type=str,
