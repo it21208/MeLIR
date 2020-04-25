@@ -3,7 +3,7 @@ import os
 
 
 destination = '/home/pfb16181/all_PubMed_Data'
-start = 400
+start = 1
 end = 1016
 uri = "ftp://ftp.ncbi.nlm.nih.gov/pubmed/baseline/"
 for i in range(start, end):
