@@ -26,7 +26,7 @@ for XMLfilename in XMLfilenames:
         
         if elem.tag == 'PubmedArticle':
             filename = format(str(index) + ".xml")
-            print('saving ', filename, ' from ', XMLfilename)
+            #print('saving ', filename, ' from ', XMLfilename)
             try:
                 with open(join(directoryPath_write, filename), 'wb+') as f:
                     f.write(b"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n")
@@ -34,5 +34,7 @@ for XMLfilename in XMLfilenames:
                     f.write(ET.tostring(elem))
                     f.write(b"</PubmedArticleSet>")
             except Exception as e:
-                print('failed to save ', filename, ' from ', XMLfilename)
+                print('failed to save xml files from ', XMLfilename)
+                break
+    print('saved XML files from ', XMLfilename)
     
