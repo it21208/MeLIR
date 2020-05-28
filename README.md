@@ -10,8 +10,9 @@
 ##### University of Strathclyde, Glasgow (UK)
 ##### ©Copyright 2020 by Alexandros Ioannidis
 
+
+> To install the requirements execute the command below from the root folder of the project.
 ```
-To install the requirements execute the command below from the root folder of the project.
 pip install -r requirements.txt
 ``` 
 
