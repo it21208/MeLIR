@@ -10,6 +10,11 @@
 ##### University of Strathclyde, Glasgow (UK)
 ##### ©Copyright 2020 by Alexandros Ioannidis
 
+```
+To install the requirements execute the command below from the root folder of the project.
+pip install -r requirements.txt
+``` 
+
 -------------------------------------------------------------------------------------------------------------------------------------
 
 It is recommended that the viewer reads the sources below to acquire an improved understanding of the context of this repository. <br />
