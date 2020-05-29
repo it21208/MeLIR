@@ -1,3 +1,7 @@
+<p align="center">
+<img src="https://github.com/it21208/MeLIR/blob/master/MeLIR-logo.png" width="360">
+</p>
+
 1) Run the following command to install the lightGBM classifier and also install the XGBooster and SGD Classifiers if these are not installed
 
 ```
