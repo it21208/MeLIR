@@ -2,7 +2,7 @@
 <img src="https://github.com/it21208/MeLIR/blob/master/MeLIR-logo.png" width="360">
 </p>
 
-🔎 Description: The objective of a Technology Assisted Review (TAR) system is to minimise the period and cost of reviewing documents by decreasing the amount of human review overhead/effort required on documents categorised as possibly non-relevant. An IR pipeline methodology to minimise the human effort as well as the time and cost associated with certain stages of a Systematic Review such as retrieving, ranking and screening medical documents. 
+🔎 𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻: The objective of a Technology Assisted Review (TAR) system is to minimise the period and cost of reviewing documents by decreasing the amount of human review overhead/effort required on documents categorised as possibly non-relevant. An IR pipeline methodology to minimise the human effort as well as the time and cost associated with certain stages of a Systematic Review such as retrieving, ranking and screening medical documents. 
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
